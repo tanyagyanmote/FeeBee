@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+:root {
+  --honey-1: #FFF5C3;
+  --honey-2: #FFE490;
+  --grid: #00000012;
+  --paper: #ffffff66;
+  /* --gap: 16px; */
+  /* --max-extra: 12; */
+}
+
+* { box-sizing: border-box; }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Lilita One', ui-sans-serif, system-ui;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(2px 2px at 10% 20%, var(--paper) 0 40%, #0000 41%),
+    radial-gradient(1.6px 1.6px at 70% 60%, var(--paper) 0 40%, #0000 41%),
+    linear-gradient(0deg, #0000 31px, var(--grid) 32px),
+    linear-gradient(90deg, #0000 31px, var(--grid) 32px),
+    linear-gradient(180deg, var(--honey-1), var(--honey-2));
+  background-size:
+    180px 180px,
+    220px 220px,
+    32px 32px, 32px 32px,
+    100% 100%;
+}
+
+#logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  left: 12%;
+}
+
+#feebeelogo {
+  max-width: 80%;
+  height: auto;
+}
+
+#bee {
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: #0000001a;
+  box-shadow: 0 10px 24px #0003, inset 0 0 0 1px #00000022;
+  cursor: grab;
+  touch-action: none;
+  font-size: 28px;
+}
+
+#bee:active {
+  cursor: grabbing;
+}
+
+#bee.dragging {
+  animation: buzz .12s linear infinite;
+}
+
+@keyframes buzz {
+  0%   { transform: rotate(-1deg); }
+  50%  { transform: rotate(1deg); }
+  100% { transform: rotate(-1deg); }
+}
