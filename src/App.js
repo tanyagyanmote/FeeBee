@@ -1,7 +1,7 @@
 import React from 'react';
 import Landing from './Landing';
 import FAQ from './FAQ';
-import LearnMore from './LearnMore';
+import LearnMore, { LearnArticles } from "./LearnMore";
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <Landing />
       <FAQ />
       <LearnMore />
+      <LearnArticles />
     </div>
   );
 }
