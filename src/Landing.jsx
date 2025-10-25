@@ -1,46 +1,57 @@
 import React from 'react';
 import './style.css';
-import logo from './Extras/FeeBeeLogo.png'; // adjust if needed
+import logo from './Extras/FeeBeeLogo.png'; // adjust path if needed
+import searchlogo from './Extras/SearchLogo.png'; // adjust path if needed
+import HTSCodeLogo from './Extras/HTSCodeLogo.png'; // adjust path if needed
+import BoxLogo from './Extras/BoxLogo.png'; // adjust path if needed
 
 const Landing = () => {
   return (
-    <section class="hero">
-      <div id="logo-container">
-        <img src={logo} id="feebeelogo" alt="FeeBee logo" />
-        <p id="welcome-text">
-          Know your tariff code before you buy avoid hidden fees at customs!
-        </p>
-      </div>
-      <div class="scroll-down-inline">
-        <span class="arrow">↓</span>
-        <span class="text">Scroll Down</span>
-        <span class="arrow">↓</span>
-      </div>
-      <section className="how-it-works">
-        <h2>How It Works</h2>
-        <div className="steps">
-        <div className="step">1. Type your item</div>
-        <div className="step">2. FeeBee suggests the right HTS code</div>
-        <div className="step">3. Share it with your seller</div>
+    <>
+      {/* Hero Section */}
+      <section className="hero">
+        <div id="logo-container">
+          <img src={logo} id="feebeelogo" alt="FeeBee logo" />
+          <p id="welcome-text">
+            Know your tariff code before you buy — avoid hidden fees at customs!
+          </p>
         </div>
-        </section>
+        <div className="scroll-down-inline">
+          <span className="arrow">↓</span>
+          <span className="text">Scroll Down</span>
+          <span className="arrow">↓</span>
+        </div>
+      </section>
 
+      {/* How It Works */}
+      <section className="how-it-works">
+        <h2>How It Works!</h2>
+        <div className="steps">
+          <div className="step">
+            <div className="icon-wrap">
+              <img src={searchlogo} alt="Search" className="plain-icon" />
+            </div>
+            <p>Type what you’re buying</p>
+          </div>
 
-        <section className="faq">
-        <h3>FAQs</h3>
-        <div className="faq-item">What is an HTS code?</div>
-        <div className="faq-item">Why does it matter?</div>
-        <div className="faq-item">Does FeeBee guarantee no import duties?</div>
-        </section>
+          <div className="step">
+            <div className="icon-wrap">
+              <img src={HTSCodeLogo} alt="HTS code" className="plain-icon" />
+            </div>
+            <p>FeeBee suggests the right HTS code</p>
+          </div>
 
-
-        <section className="resources">
-        <h3>Learn More</h3>
-        <div className="blog-card">Top 10 Most Confusing Import Categories</div>
-        <div className="blog-card">How to Ask a Seller for the Right Code</div>
-        </section>
-    </section>
+          <div className="step">
+            <div className="icon-wrap">
+              <img src={BoxLogo} alt="Share code" className="plain-icon" />
+            </div>
+            <p>Give it to your seller to avoid surprise fees</p>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
 export default Landing;
+
