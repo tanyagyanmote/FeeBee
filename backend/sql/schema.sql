@@ -1,8 +1,10 @@
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+
 CREATE TABLE IF NOT EXISTS hts_codes (
   id                 BIGSERIAL PRIMARY KEY,
-  code10             TEXT,
-  code8              TEXT,
   hs6                TEXT,
+  code8              TEXT,
+  code10             TEXT,
   code_display       TEXT,
   description        TEXT NOT NULL,
   unit               TEXT,
@@ -12,3 +14,4 @@ CREATE TABLE IF NOT EXISTS hts_codes (
   additional_duties  TEXT,
   indent             INT
 );
+
