@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import "./faq.css";
+import '../CSS/faq.css';
 
 export default function FAQ() {
   const QA = [

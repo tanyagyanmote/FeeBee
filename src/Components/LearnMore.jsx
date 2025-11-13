@@ -1,4 +1,4 @@
-import "./learn-more.css";
+import "../CSS/learn-more.css";
 
 /** Single source of truth: cards + article content */
 export const LEARN_ARTICLES = [
