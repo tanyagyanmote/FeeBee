@@ -24,14 +24,28 @@ const Landing = () => {
                   before you buy — no more surprise customs fees.
                 </p>
               </div>
-
               <div className="bags-box">
                 <div className="bag-row">
-                  <img src={bag1} alt="Vintage bag 1" className="bag-img" />
-                  <img src={bag2} alt="Vintage bag 2" className="bag-img bag-img-middle" />
-                  <img src={bag3} alt="Vintage bag 3" className="bag-img" />
+                  <div className="bag-card">
+                    <img src={bag1} alt="Vintage bag 1" className="bag-img" />
+                    <p className="bag-label">Chloe Paddington</p>
+                    <p className="bag-meta">Italy → US · Example</p>
+                  </div>
+
+                  <div className="bag-card bag-card-middle">
+                    <img src={bag2} alt="Vintage bag 2" className="bag-img" />
+                    <p className="bag-label">Fendi Baguette</p>
+                    <p className="bag-meta">France → US · Example</p>
+                  </div>
+
+                  <div className="bag-card">
+                    <img src={bag3} alt="Vintage bag 3" className="bag-img" />
+                    <p className="bag-label">Dior Denim Saddle </p>
+                    <p className="bag-meta">Japan → US · Example</p>
+                  </div>
                 </div>
               </div>
+
             </div>
           </div>
 

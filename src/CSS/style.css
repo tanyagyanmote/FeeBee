@@ -23,16 +23,11 @@ html, body {
   margin: 0;
   font-family: 'Lilita One', ui-sans-serif, system-ui;
   background:
-    radial-gradient(2px 2px at 10% 20%, var(--paper) 0 40%, #0000 41%),
-    radial-gradient(1.6px 1.6px at 70% 60%, var(--paper) 0 40%, #0000 41%),
-    linear-gradient(0deg, #0000 31px, var(--grid) 32px),
-    linear-gradient(90deg, #0000 31px, var(--grid) 32px),
-    linear-gradient(180deg, var(--honey-1), var(--honey-2));
-  background-size:
-    180px 180px,
-    220px 220px,
-    32px 32px, 32px 32px,
-    100% 100%;
+    radial-gradient(circle at 14% 18%, rgba(255, 255, 255, 0.9) 0, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(circle at 85% 80%, rgba(255, 232, 210, 0.95) 0, rgba(255, 232, 210, 0) 60%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0.16) 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0) 7px),
+    linear-gradient(135deg, #fdf5e8 0%, #ffe7c0 40%, #f5c79a 100%);
+  background-attachment: fixed;
 }
 
 .hero {
@@ -42,9 +37,25 @@ html, body {
   align-items: center;
   justify-content: center;
   position: relative;
+  padding-top: 4vh;
+  padding-bottom: 6vh;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 6% 4%;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(160, 120, 80, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  z-index: 0;
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,7 +90,6 @@ html, body {
 /* ---------- LOGO + TAGLINE ---------- */
 
 .logo-box {
-  margin-top: 15%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -88,7 +98,7 @@ html, body {
 }
 
 #feebeelogo {
-  width: 100%;       /* bigger logo */
+  width: 80%;
   height: auto;
 }
 
@@ -96,19 +106,9 @@ html, body {
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
   font-size: 150%;
-  color: #000000;
+  color: #2a1b10;
   margin-top: 4%;
   max-width: 90%;
-}
-
-
-#welcome-text {
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 400;
-  font-size: 150%;
-  color: #000000;
-  margin-top: 5%;
-  max-width: 80%;
 }
 
 .underline {
@@ -118,47 +118,118 @@ html, body {
 
 /* ---------- BAGS UNDER TEXT ---------- */
 
+/* ---------- BAGS UNDER TEXT ---------- */
+
 .bags-box {
   width: 100%;
+  margin-top: 6%;
   display: flex;
   justify-content: center;
 }
 
 .bag-row {
-  width: 60%;
+  width: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: stretch;
   justify-content: center;
   gap: 5%;
 }
 
-.bag-img {
-  width: 58%;
-  height: auto;
-  filter: drop-shadow(0 4% 6% rgba(0, 0, 0, 0.18));
+.bag-card {
+  position: relative;
+  width: 28%;
+  padding: 6% 4% 8%;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 10px 24px rgba(150, 110, 70, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    background 0.22s ease,
+    border-color 0.22s ease;
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.bag-img-middle {
-  transform: translateY(4%);
+.bag-card::before {
+  content: "Tap to estimate";
+  position: absolute;
+  top: 6%;
+  right: 8%;
+  padding: 3% 6%;
+  border-radius: 999px;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 55%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(255, 216, 140, 0.9);
+  color: #3a2b20;
 }
+
+.bag-card:hover {
+  transform: translateY(-6%) scale(1.03) rotate(-1deg);
+  box-shadow: 0 16px 32px rgba(120, 80, 50, 0.28);
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(240, 190, 120, 0.9);
+}
+
+.bag-card-middle {
+  transform: translateY(3%);
+}
+
+.bag-card-middle:hover {
+  transform: translateY(-4%) scale(1.04) rotate(1deg);
+}
+
+.bag-img {
+  width: 80%;
+  height: auto;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.22));
+  transition: transform 0.22s ease;
+}
+
+.bag-card:hover .bag-img {
+  transform: translateY(-4%);
+}
+
+.bag-label {
+  margin-top: 8%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 90%;
+  color: #2a1b10;
+}
+
+.bag-meta {
+  margin-top: 3%;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 75%;
+  color: #7a6050;
+}
+
 
 /* ---------- SCROLL HINT ---------- */
 
 .scroll-down-inline {
   position: absolute;
-  bottom: 10%;
+  bottom: 8%;
   left: 50%;
   transform: translateX(-50%) scaleX(0.8);
   display: flex;
   align-items: center;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 500;
-  color: #000000;
+  color: #3a2b20;
   font-size: 150%;
 }
 
 .arrow {
-  animation: bounce 150% infinite;
+  animation: bounce 1.5s infinite;
   font-size: 150%;
   margin: 0 4%;
 }
@@ -171,7 +242,7 @@ html, body {
 /* ---------- HOW IT WORKS ---------- */
 
 .how-it-works {
-  background-color: #fffcee;
+  background-color: #fff8ea;
   text-align: center;
   padding-top: 5%;
   padding-bottom: 10%;
@@ -183,7 +254,7 @@ html, body {
 .how-it-works h2 {
   font-size: 400%;
   font-weight: 400;
-  color: #333;
+  color: #3a2b20;
   margin-bottom: 8%;
 }
 
