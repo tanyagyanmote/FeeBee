@@ -16,20 +16,25 @@ const Landing = () => {
       <section className="hero">
         <div className="hero-inner">
           <div className="hero-left">
-            <div id="logo-container">
-              <img src={logo} id="feebeelogo" alt="FeeBee logo" />
-              <p id="welcome-text">
-                See the <span className="underline">real price</span> of your dream bag
-                before you buy — no more surprise customs fees.
-              </p>
+            <div className="hero-left-inner">
+              <div className="logo-box">
+                <img src={logo} id="feebeelogo" alt="FeeBee logo" />
+                <p id="welcome-text">
+                  See the <span className="underline">real price</span> of your dream bag
+                  before you buy — no more surprise customs fees.
+                </p>
+              </div>
 
-              <div className="bag-row">
-                <img src={bag1} alt="Vintage bag 1" className="bag-img" />
-                <img src={bag2} alt="Vintage bag 2" className="bag-img bag-img-middle" />
-                <img src={bag3} alt="Vintage bag 3" className="bag-img" />
+              <div className="bags-box">
+                <div className="bag-row">
+                  <img src={bag1} alt="Vintage bag 1" className="bag-img" />
+                  <img src={bag2} alt="Vintage bag 2" className="bag-img bag-img-middle" />
+                  <img src={bag3} alt="Vintage bag 3" className="bag-img" />
+                </div>
               </div>
             </div>
           </div>
+
 
           <div className="hero-right">
             <Receipt />
