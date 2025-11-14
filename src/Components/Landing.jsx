@@ -18,34 +18,107 @@ const Landing = () => {
           <div className="hero-left">
             <div className="hero-left-inner">
               <div className="logo-box">
-                <img src={logo} id="feebeelogo" alt="FeeBee logo" />
-                <p id="welcome-text">
-                  See the <span className="underline">real price</span> of your dream bag
-                  before you buy — no more surprise customs fees.
-                </p>
+                {/* <img src={logo} id="feebeelogo" alt="FeeBee logo" /> */}
+                  <h1 className="logo-text">FEEBEE</h1>
+                    <p id="welcome-text">
+                      <span className="welcome-line welcome-line1">
+                        see the real price of your dream bag
+                      </span>
+                      <span className="welcome-line welcome-line2">
+                        no more surprise customs fees.
+                      </span>
+                    </p>
               </div>
               <div className="bags-box">
                 <div className="bag-row">
                   <div className="bag-card">
+                    <div className="bag-chip-row">
+                      <span className="bag-chip">Italy → US</span>
+                      <span className="bag-chip bag-chip-duty">Low duty</span>
+                    </div>
+
                     <img src={bag1} alt="Vintage bag 1" className="bag-img" />
-                    <p className="bag-label">Chloe Paddington</p>
-                    <p className="bag-meta">Italy → US · Example</p>
+
+                    <p className="bag-label">Chloé Paddington</p>
+                    <p className="bag-meta">Early 2000s · Leather satchel</p>
+
+                    <div className="bag-fees">
+                      <div className="bag-fee-row">
+                        <span className="bag-fee-label">Item</span>
+                        <span className="bag-fee-value">$1,200</span>
+                      </div>
+                      <div className="bag-fee-row">
+                        <span className="bag-fee-label">Shipping</span>
+                        <span className="bag-fee-value">$45</span>
+                      </div>
+                      <div className="bag-fee-row bag-fee-row-highlight">
+                        <span className="bag-fee-label">Fees</span>
+                        <span className="bag-fee-value">+$140 est.</span>
+                      </div>
+                    </div>
+
+                    <p className="bag-note">FeeBee surfaces these before you checkout.</p>
                   </div>
 
                   <div className="bag-card bag-card-middle">
+                    <div className="bag-chip-row">
+                      <span className="bag-chip">France → US</span>
+                      <span className="bag-chip bag-chip-duty">Medium duty</span>
+                    </div>
+
                     <img src={bag2} alt="Vintage bag 2" className="bag-img" />
+
                     <p className="bag-label">Fendi Baguette</p>
-                    <p className="bag-meta">France → US · Example</p>
+                    <p className="bag-meta">Canvas · Classic shoulder</p>
+
+                    <div className="bag-fees">
+                      <div className="bag-fee-row">
+                        <span className="bag-fee-label">Item</span>
+                        <span className="bag-fee-value">$2,050</span>
+                      </div>
+                      <div className="bag-fee-row">
+                        <span className="bag-fee-label">Shipping</span>
+                        <span className="bag-fee-value">$55</span>
+                      </div>
+                      <div className="bag-fee-row bag-fee-row-highlight">
+                        <span className="bag-fee-label">Fees</span>
+                        <span className="bag-fee-value">+$210 est.</span>
+                      </div>
+                    </div>
+
+                    <p className="bag-note">See the all-in total before you commit.</p>
                   </div>
 
                   <div className="bag-card">
+                    <div className="bag-chip-row">
+                      <span className="bag-chip">Japan → US</span>
+                      <span className="bag-chip bag-chip-duty">Higher duty</span>
+                    </div>
+
                     <img src={bag3} alt="Vintage bag 3" className="bag-img" />
-                    <p className="bag-label">Dior Denim Saddle </p>
-                    <p className="bag-meta">Japan → US · Example</p>
+
+                    <p className="bag-label">Dior Denim Saddle</p>
+                    <p className="bag-meta">Early 200s · John Galliano Era</p>
+
+                    <div className="bag-fees">
+                      <div className="bag-fee-row">
+                        <span className="bag-fee-label">Item</span>
+                        <span className="bag-fee-value">$1,650</span>
+                      </div>
+                      <div className="bag-fee-row">
+                        <span className="bag-fee-label">Shipping</span>
+                        <span className="bag-fee-value">$60</span>
+                      </div>
+                      <div className="bag-fee-row bag-fee-row-highlight">
+                        <span className="bag-fee-label">Fees</span>
+                        <span className="bag-fee-value">+$260 est.</span>
+                      </div>
+                    </div>
+
+                    <p className="bag-note">No more “mystery invoice” at your door.</p>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
 

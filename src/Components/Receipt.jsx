@@ -22,7 +22,7 @@ const Receipt = () => {
     <div className="receipt-wrapper">
       <div className="receipt">
         <header className="receipt-header">
-          <h1 className="receipt-title">FEEBEE ESTIMATE</h1>
+          <h1 className="receipt-title">ESTIMATE</h1>
           <div className="receipt-meta">
             <span>Italy → USA</span>
             <span>Dior Denim Saddle</span>
