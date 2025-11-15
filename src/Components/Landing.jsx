@@ -1,7 +1,7 @@
 import React from 'react';
 import '../CSS/style.css';
 import '../CSS/Receipt.css';
-import logo from '../Extras/FeeBeeLogo.png';
+// import logo from '../Extras/FeeBeeLogo.png';
 import searchlogo from '../Extras/SearchLogo.png';
 import HTSCodeLogo from '../Extras/HTSCodeLogo.png';
 import BoxLogo from '../Extras/BoxLogo.png';

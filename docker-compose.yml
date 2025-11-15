@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  feebee:
+    build: .
+    ports:
+      - "3000:3000"
+    # Mount your local code into the container for live reload
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
