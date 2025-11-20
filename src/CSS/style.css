@@ -1,6 +1,4 @@
-/* src/CSS/style.css */
-
-/* FONTS – only what you actually use right now */
+/* ---------------- FONTS ---------------- */
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@500&display=swap');
@@ -10,11 +8,8 @@
   src: url('../Extras/fonts/IBMPlexSans.ttf') format('truetype');
 }
 
-/* ---------- GLOBAL ---------- */
-
-* {
-  box-sizing: border-box;
-}
+/* ---------------- GLOBAL ---------------- */
+* { box-sizing: border-box; }
 
 html, body {
   height: 100%;
@@ -26,160 +21,151 @@ html, body {
     linear-gradient(180deg, #faf3e7 0%, #f3e4d1 100%);
 }
 
-/* ---------- HERO LAYOUT ---------- */
-
+/* ================== HERO ================== */
+/* Single-column hero that fits in one screen */
 .hero {
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  padding-top: 4vh;
-  padding-bottom: 6vh;
+  width: 100%;
+  min-height: 100svh;                /* viewport height incl. mobile chrome */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;       /* start at the top */
+  padding: clamp(16px, 4vh, 36px) 0; /* modest vertical padding */
+  overflow: hidden;                  /* hide tiny shadow bleed */
 }
 
+/* frosted frame behind */
 .hero::before {
   content: "";
   position: absolute;
-  inset: 3% 4%;
+  inset: clamp(8px, 2.5%, 22px) clamp(12px, 3.5%, 28px);
   border-radius: 32px;
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(18px);
-  box-shadow: 0 18px 45px rgba(160, 120, 80, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 18px 45px rgba(160,120,80,0.28);
+  border: 1px solid rgba(255,255,255,0.75);
   z-index: 0;
 }
 
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5%;
-  max-width: 90%;
+/* top-centered title */
+.hero-header{
   width: 100%;
-  margin: 0 auto;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
-.hero-left {
-  flex: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-left-inner {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 6%;
-}
-
-.hero-right {
-  flex: 50%;
-  display: flex;
-  justify-content: center;
-}
-
-/* ---------- LOGO + TAGLINE ---------- */
-
-.logo-box {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 1200px;
   text-align: center;
-  gap: 6px;
+  margin: 0 auto clamp(10px, 2vh, 16px);
+  padding: 0 5%;
+  position: relative;
+  z-index: 1; /* above frosted */
 }
 
-#feebeelogo {
-  width: 70%;
-  height: auto;
-}
-
-/* FEEBEE wordmark */
-.logo-text {
+.page-title{
   margin: 0;
   font-family: 'Cormorant SC', serif;
   font-weight: 500;
-  font-size: 5rem;
+  font-size: clamp(2.3rem, 5.6vw, 4.6rem);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: #2b1910;
 }
 
-/* Tagline */
-#welcome-text {
-  margin-top: 0.6rem;
+/* -------- Subtitle + typing (2 lines) -------- */
+.page-subtitle{
+  margin: .35rem auto 0;
+  max-width: 48ch;
+  text-align: center;
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.35rem;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
   color: #4a3522;
+  line-height: 1.42;
+  --speed: 80ms; /* typing speed */
 }
 
-.welcome-line {
-  display: block;
-}
-
-/* second line highlight */
-.welcome-line2 {
+.type-line{
   position: relative;
-  display: inline-block;
-  padding: 0 4px 2px;
+  display: block;
+  margin: 0 auto;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  font-size: clamp(1rem, 2.2vw, 1.28rem);
+  --chars: 30;
+  --delay: 0ms;
+  --dur: calc(var(--chars) * var(--speed));
+  animation: typing var(--dur) steps(var(--chars)) forwards;
+  animation-delay: var(--delay);
 }
 
-.welcome-line2::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 2%;
-  height: 80%;
-  background: rgba(255, 229, 188, 0.7);
-  z-index: -1;
-  animation: welcomeHighlight 1s ease-out 0.45s forwards;
+.type-line::after{
+  content:"";
+  position:absolute;
+  top: 0; bottom: 0; right: 0;
+  width: .09em;
+  background: currentColor;
+  opacity: 0;
+  animation:
+    caretBlink .8s step-end infinite var(--delay),
+    caretOff 1ms linear forwards calc(var(--delay) + var(--dur));
 }
 
-@keyframes welcomeHighlight {
-  0% {
-    width: 0%;
-    opacity: 0;
-  }
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
+.type-line.l1{ --chars: 38; --delay: 0ms; }
+.type-line.l2{ --chars: 33; --delay: calc(38 * var(--speed) + 250ms); }
+
+.type-highlight{ position: relative; }
+.type-highlight::before{
+  content:"";
+  position:absolute; left:0; bottom:.06em;
+  height:70%; width:0%;
+  background: rgba(255,229,188,.7);
+  z-index:-1;
+  animation: sweep 600ms ease forwards;
+  animation-delay: calc((38 * var(--speed)) + (33 * var(--speed)) + 350ms);
 }
 
-/* ---------- BAG CARDS ---------- */
+@keyframes typing{ from{width:0} to{width: calc(var(--chars) * 1ch)} }
+@keyframes caretBlink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
+@keyframes caretOff{ from{opacity:1} to{opacity:0} }
+@keyframes sweep{ from{width:0%} to{width:100%} }
 
+.hero-content{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ================== BAG CARDS ================== */
 .bags-box {
   width: 100%;
-  margin-top: 6%;
+  margin-top: clamp(8px, 1.2vh, 14px);
   display: flex;
   justify-content: center;
 }
 
 .bag-row {
-  width: 100%;
+  width: 70%;
   display: flex;
   align-items: stretch;
   justify-content: center;
-  gap: 5%;
+  gap: clamp(12px, 3vw, 24px);
+  /* size clamp keeps 3 cards visible in one screen */
+  --card-min: 200px;
+  --card-ideal: 27vw;
+  --card-max: 320px;
 }
 
 .bag-card {
   position: relative;
-  width: 28%;
-  padding: 5% 4% 5%;
+  width: clamp(var(--card-min), var(--card-ideal), var(--card-max));
+  padding: clamp(12px, 2.6vw, 18px);
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.96);
-  box-shadow: 0 10px 24px rgba(150, 110, 70, 0.15);
+  box-shadow: 0 10px 24px rgba(150,110,70,0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -191,7 +177,6 @@ html, body {
     background 0.22s ease,
     border-color 0.22s ease;
   border: 1px solid rgba(255, 255, 255, 0.9);
-  height: 100%;
 }
 
 .bag-card:hover {
@@ -200,31 +185,27 @@ html, body {
   background: rgba(255, 255, 255, 0.98);
   border-color: rgba(240, 190, 120, 0.9);
 }
-
-.bag-card-middle:hover {
-  transform: translateY(-6%) scale(1.04) rotate(1deg);
-}
+.bag-card-middle:hover { transform: translateY(-6%) scale(1.04) rotate(1deg); }
 
 .bag-chip-row {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  gap: 4%;
-  margin-bottom: 4%;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .bag-chip {
-  padding: 3% 5%;
+  padding: 6px 10px;
   border-radius: 999px;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 60%;
+  font-size: clamp(10px, 1.2vw, 12px);
   letter-spacing: 0.06em;
   text-transform: uppercase;
   background: rgba(243, 232, 255, 0.9);
   color: #4b3240;
   border: 1px dashed rgba(117, 90, 130, 0.6);
 }
-
 .bag-chip-duty {
   background: rgba(255, 244, 209, 0.95);
   color: #4b3620;
@@ -232,76 +213,75 @@ html, body {
 }
 
 .bag-img {
-  width: 120%;
+  width: 100%;
   height: auto;
-  margin-top: 4%;
+  margin-top: 8px;
   filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.22));
   transition: transform 0.22s ease;
 }
-
-.bag-card:hover .bag-img {
-  transform: translateY(-4%);
-}
+.bag-card:hover .bag-img { transform: translateY(-4%); }
 
 .bag-label {
-  margin-top: 6%;
+  margin-top: 10px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 600;
-  font-size: 90%;
+  font-size: clamp(14px, 1.6vw, 16px);
   color: #2a1b10;
 }
-
 .bag-meta {
-  margin-top: 2%;
+  margin-top: 4px;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: 400;
-  font-size: 75%;
+  font-size: clamp(11px, 1.3vw, 13px);
   color: #7a6050;
 }
 
 .bag-fees {
   width: 100%;
-  margin-top: 4%;
-  padding-top: 3%;
+  margin-top: 8px;
+  padding-top: 8px;
   border-top: 1px dashed rgba(180, 150, 120, 0.55);
 }
-
 .bag-fee-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 75%;
+  font-size: clamp(11px, 1.3vw, 13px);
   color: #5a4030;
-  margin-top: 2%;
+  margin-top: 6px;
 }
-
 .bag-fee-row-highlight {
-  margin-top: 3%;
-  padding-top: 2%;
-  border-top: 1px solid rgba(220, 170, 110, 0.7);
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(220,170,110,0.7);
   color: #3a2410;
 }
-
-.bag-fee-label {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.bag-fee-value {
-  font-variant-numeric: tabular-nums;
-  font-weight: 600;
-}
+.bag-fee-label { text-transform: uppercase; letter-spacing: 0.08em; }
+.bag-fee-value { font-variant-numeric: tabular-nums; font-weight: 600; }
 
 .bag-note {
-  margin-bottom: auto;
+  margin-top: 8px;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 70%;
+  font-size: clamp(10px, 1.2vw, 12px);
   color: #92705a;
 }
 
-/* ---------- SCROLL HINT ---------- */
+/* Make sure hero content + 3 cards fit short viewports */
+@media (max-height: 740px) {
+  .page-title { font-size: clamp(2rem, 5vw, 3.8rem); }
+  .type-line { font-size: clamp(.95rem, 2vw, 1.15rem); }
+  .bag-img { width: 95%; }
+  .bag-card { padding: clamp(10px, 2.2vw, 14px); }
+}
 
+/* Stack cards on narrow screens */
+@media (max-width: 900px){
+  .bag-row { flex-wrap: wrap; }
+  .bag-card { width: clamp(260px, 46vw, 340px); }
+}
+
+/* ================== SCROLL HINT (optional) ================== */
 .scroll-down-inline {
   position: absolute;
   bottom: 8%;
@@ -314,34 +294,22 @@ html, body {
   color: #3a2b20;
   font-size: 150%;
 }
+.arrow { animation: bounce 1.5s infinite; font-size: 150%; margin: 0 4%; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(30%)} }
 
-.arrow {
-  animation: bounce 1.5s infinite;
-  font-size: 150%;
-  margin: 0 4%;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(30%); }
-}
-
-/* ---------- HOW IT WORKS ---------- */
-
+/* ================== HOW IT WORKS ================== */
 .how-it-works {
   background-color: #fff8ea;
   text-align: center;
   padding: 5% 5% 10%;
   font-family: 'IBM Plex Sans', sans-serif;
 }
-
 .how-it-works h2 {
   font-size: 400%;
   font-weight: 400;
   color: #3a2b20;
   margin-bottom: 1%;
 }
-
 .steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -352,29 +320,22 @@ html, body {
   max-width: 90%;
   margin: 0 auto;
 }
+.step { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.icon-wrap { width: 60%; display: grid; place-items: center; }
+.plain-icon { width: 200%; height: 200%; object-fit: contain; display: block; }
+.step p { margin: 0; font-size: 120%; line-height: 125%; }
 
-.step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* (Legacy logo styles kept for compatibility) */
+.logo-box{ width:100%; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+#feebeelogo{ width:70%; height:auto; }
+.logo-text{ margin:0; font-family:'Cormorant SC', serif; font-weight:500; font-size:5rem; text-transform:uppercase; color:#2b1910; }
+#welcome-text{ margin-top:.6rem; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.35rem; line-height:1.5; letter-spacing:.04em; color:#4a3522; }
+.welcome-line{ display:block; }
+.welcome-line2{ position:relative; display:inline-block; padding:0 4px 2px; }
+.welcome-line2::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:2%;
+  height:80%; background:rgba(255,229,188,.7); z-index:-1;
+  animation: welcomeHighlight 1s ease-out .45s forwards;
 }
-
-.icon-wrap {
-  width: 60%;
-  display: grid;
-  place-items: center;
-}
-
-.plain-icon {
-  width: 200%;
-  height: 200%;
-  object-fit: contain;
-  display: block;
-}
-
-.step p {
-  margin: 0;
-  font-size: 120%;
-  line-height: 125%;
-}
+@keyframes welcomeHighlight{ 0%{width:0;opacity:0} 100%{width:100%;opacity:1} }
