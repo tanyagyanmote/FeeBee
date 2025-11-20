@@ -26,16 +26,15 @@ html, body {
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100svh;                /* viewport height incl. mobile chrome */
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;       /* start at the top */
-  padding: clamp(16px, 4vh, 36px) 0; /* modest vertical padding */
-  overflow: hidden;                  /* hide tiny shadow bleed */
+  justify-content: flex-start;
+  padding: clamp(16px, 4vh, 36px) 0;
+  overflow: hidden;
 }
 
-/* frosted frame behind */
 .hero::before {
   content: "";
   position: absolute;
@@ -48,7 +47,6 @@ html, body {
   z-index: 0;
 }
 
-/* top-centered title */
 .hero-header{
   width: 100%;
   max-width: 1200px;
@@ -56,7 +54,7 @@ html, body {
   margin: 0 auto clamp(10px, 2vh, 16px);
   padding: 0 5%;
   position: relative;
-  z-index: 1; /* above frosted */
+  z-index: 1;
 }
 
 .page-title{
@@ -153,7 +151,6 @@ html, body {
   align-items: stretch;
   justify-content: center;
   gap: clamp(12px, 3vw, 24px);
-  /* size clamp keeps 3 cards visible in one screen */
   --card-min: 200px;
   --card-ideal: 27vw;
   --card-max: 320px;
@@ -267,7 +264,6 @@ html, body {
   color: #92705a;
 }
 
-/* Make sure hero content + 3 cards fit short viewports */
 @media (max-height: 740px) {
   .page-title { font-size: clamp(2rem, 5vw, 3.8rem); }
   .type-line { font-size: clamp(.95rem, 2vw, 1.15rem); }
@@ -275,7 +271,6 @@ html, body {
   .bag-card { padding: clamp(10px, 2.2vw, 14px); }
 }
 
-/* Stack cards on narrow screens */
 @media (max-width: 900px){
   .bag-row { flex-wrap: wrap; }
   .bag-card { width: clamp(260px, 46vw, 340px); }
